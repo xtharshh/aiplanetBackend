@@ -1,0 +1,68 @@
+
+
+useresume.aiCreated with UseResume AI
+HARSH KUMAR
+Full Stack Developer
+Safed Sagar, Air Force Station, Gurugram - 122005xt.harshh@gmail.com
++91 9528793978PortfolioLinkedinGithub
+PROFESSIONAL SUMMARY
+I’m a dedicated and enthusiastic Computer Science and Engineering student 
+at Chandigarh Engineering College, CGC Landran, Mohali. My interests revolve 
+around web development, and I’ve honed my skills in programming languages such 
+as C, C++, React, and Next.js.
+EDUCATION
+B.Tech in Computer Science EngineeringJan 2022 - Jan 2026
+Chandigarh Engineering College, Landran
+Score: 8.5 CGPA
+Intermediate (CBSE)Jan 2021 - Jan 2022
+Kendriya Vidyalaya No.1 Air Force Station, Agra
+Matriculation (CBSE)Jan 2019 - Jan 2020
+Kendriya Vidyalaya No.1 Air Force Station, Agra
+CERTIFICATIONS
+NPTEL Certification in Database 
+Management System
+Jan 2024
+C++, Java, and Software EngineeringJan 2024
+Git GitHub by Physics WallahJan 2025
+AWS Cloud Computing, Data EngineerJan 2024
+Smart India Hackathon (SIH)
+PROJECTS
+KWICKJan 2023 - Feb 2023
+Developed a Maid Services Platform with automated service provider matching. 
+Implemented Directions Google API and Google Places API for navigation and 
+location services.
+KOOLNOTESJan 2023
+Integrated AI-driven summaries and a ChatBot (Kool.Ai) for interactive learning and 
+support. Developed a job finder module using CRUD operations.
+ADVO-KIDSJan 2023 - Feb 2023
+Created a multiple-choice question system to educate children about legal laws. 
+Implemented a dynamic prize system for correct answers.
+CORE COMPETENCIES
+-UI/UX Development
+-Front-End Development
+-Web Design
+-Responsive Design
+-Backend Development
+-Full Stack Development
+-Full Stack React Native Development
+-Agile Methodologies
+-Team Leadership
+-Problem Solving
+-Creative Thinking
+-Strong Communication Skills
+-Analytical Thinking
+-Decision Making
+SKILLS
+C
+C++
+JavaScript
+Java
+ACTIVITIES
+Technical Head of the Phoenix Club
+Organized and managed a successful 
+coding event in 2024, ensuring an 
+engaging experience for all participants.
+Qualified for the National Smart India 
+Hackathon
+Qualified for the National Smart India 
+Hackathon (2023).
