@@ -25,6 +25,10 @@ app.get('/health', (req, res) => {
   res.json({ status: 'ok' });
 });
 
+app.get('/', (req, res) => {
+  res.send('Backend is running!');
+});
+
 app.use('/upload', uploadRouter);
 app.use('/documents', documentsRouter);
 app.use('/ask', askRouter);
