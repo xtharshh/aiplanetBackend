@@ -5,6 +5,7 @@ import fs from 'fs';
 import { fileURLToPath } from 'url';
 import pdfParse from 'pdf-parse';
 import Document from '../models/document.js';
+import axios from 'axios';
 
 const router = express.Router();
 
@@ -43,9 +44,10 @@ router.post('/', upload.single('file'), async (req, res) => {
       return res.status(500).json({ error: 'Failed to extract text from PDF.', details: err.message });
     }
     const textFilename = req.file.originalname + '.txt';
-    const textPath = path.join(extractedDir, textFilename);
+    const absoluteTextPath = path.join(extractedDir, textFilename); // Absolute path for saving
+    const relativeTextPath = path.join('extracted', textFilename); // Relative path for DB
     try {
-      fs.writeFileSync(textPath, data.text, 'utf-8');
+      fs.writeFileSync(absoluteTextPath, data.text, 'utf-8');
     } catch (err) {
       return res.status(500).json({ error: 'Failed to save extracted text.', details: err.message });
     }
@@ -53,15 +55,37 @@ router.post('/', upload.single('file'), async (req, res) => {
     try {
       doc = await Document.create({
         filename: req.file.originalname,
-        textPath,
+        textPath: relativeTextPath, // Store only relative path
       });
     } catch (err) {
       return res.status(500).json({ error: 'Failed to save document metadata.', details: err.message });
+    }
+    let geminiResponse = null;
+    try {
+      const geminiApiKey = process.env.GEMINI_API_KEY;
+      const geminiApiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${geminiApiKey}`;
+      const geminiPayload = {
+        contents: [
+          {
+            parts: [
+              { text: `Summarize the following PDF content:\n${data.text.slice(0, 12000)}` }
+            ]
+          }
+        ]
+      };
+      const geminiRes = await axios.post(geminiApiUrl, geminiPayload, {
+        headers: { 'Content-Type': 'application/json' }
+      });
+      geminiResponse = geminiRes.data;
+    } catch (err) {
+      console.error('Gemini API error:', err.response ? err.response.data : err.message);
+      geminiResponse = { error: 'Failed to get response from Gemini API', details: err.message, response: err.response ? err.response.data : undefined };
     }
     res.json({
       id: doc.id,
       filename: doc.filename,
       uploadDate: doc.uploadDate,
+      gemini: geminiResponse
     });
   } catch (err) {
     res.status(500).json({ error: 'Unexpected server error.', details: err.message });
